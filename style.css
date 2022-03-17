@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+:root {
+  --titulo: 'Roboto Mono', monospace;
+  --cuerpo: 'Lato', sans-serif;
+  --colorMenu: #f3f3f3;
+  --colorTitulo: #e4faf9;
+  --colorBody: radial-gradient(circle, rgba(238,174,179,1) 0%, rgba(177,148,233,1) 100%);
+  --colorArticulo: linear-gradient(90deg, rgba(229,252,252,1) 0%, rgba(255,228,228,1) 50%, rgba(255,248,239,1) 100%);
+  --colorHover: radial-gradient(circle, rgba(238,149,156,1) 0%, rgba(157,115,237,1) 100%);
+}
+
+body {
+  background: var(--colorBody);
+}
+
+/* Estilos del header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+header .btn-filtrar {
+  background: var(--colorHover);
+  color: var(--colorTitulo);
+  cursor: pointer;
+  border: solid 0.5px var(--colorMenu);
+  border-radius: 5px;
+  margin: 0px 10px;
+}
+
+header h1 {
+  font-family: var(--titulo);
+  color: var(--colorTitulo);
+  margin: 0px 20px;
+}
+
+header .menu ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+header .menu ul li {
+  list-style: none;
+  margin: 0px 5px;
+}
+
+header .menu ul li a {
+  color: var(--colorMenu);
+  text-decoration: none;
+  font-family: var(--cuerpo);
+}
+
+/* Estilos del main */
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+main .articulo {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 5px;
+  margin: 10px 0px;
+  border: solid 2px var(--colorMenu);
+  border-radius: 5px;
+  background: var(--colorArticulo);
+}
+
+main .articulo h2 {
+  font-family: var(--titulo);
+  font-size: 20px;
+}
+
+main .articulo h4 {
+  font-family: var(--cuerpo);
+  font-size: 12px;
+  margin: 2px;
+}
+
+main .articulo p {
+  font-family: var(--cuerpo);
+  font-size: 15px;
+}
+
+/* Estilos del Footer */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--cuerpo);
+  color: var(--colorMenu);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .container .contacto {
+  margin: 10px 10px;
+}
+
+footer .container .contacto h6 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 5px 0px;
+}
+
+footer .container .social {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+footer .container .social ion-icon {
+  cursor: pointer;
+  font-size: 30px;
+  margin: 0px 10px;
+}
+
+footer p {
+  font-family: var(--titulo);
+  font-weight: bold;
+  align-self: center;
+}
+
+/* Animaciones Interactividad */
+
+header:hover {
+  background: var(--colorHover);
+  border-radius: 10px;
+}
+
+header .btn-filtrar:hover {
+  background: var(--colorBody);
+  color: var(--colorTitulo);
+}
+
+header .menu ul li a:hover{
+  text-decoration: underline;
+}
+
+footer:hover {
+  background: var(--colorHover);
+  border-radius: 10px;
+}
+
+footer .container .social ion-icon:hover {
+  font-size: 28px;
+}
+
+/* Clase ocultar */
+
+.ocultar {
+  visibility: hidden;
+}
