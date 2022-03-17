@@ -16,3 +16,4 @@ Conoce la App
 -------------
 
 En el siguiente enlace podrás observar la app desde _github pages_ :
+https://kefrari27.github.io/DH_News/
