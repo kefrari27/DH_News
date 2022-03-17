@@ -42,71 +42,58 @@ const noticias = [
 
 function renderizarNoticias(noticias){
   let contenedor = document.querySelector(".contenedor");
-
+  
   for(let articulo of noticias){
-    //Creacion de nodos
-    let divArticulo = document.createElement("div");
-    let imgArticulo = document.createElement("img");
-    let tituloArticulo = document.createElement("h2");
-    let fechaArticulo = document.createElement("h4");
-    let cuerpoArticulo = document.createElement("p");
-    imgArticulo.setAttribute("src", articulo.imgUrl);
-    divArticulo.setAttribute("class", "articulo");
+    //Creacion de articulo de noticia nacional
     if(articulo.tipoNacional == true){
-      divArticulo.classList.add("nacional");
+      contenedor.innerHTML += `
+      <div class="articulo nacional">
+        <img src="${articulo.imgUrl}" alt="Imagen alusiva a la noticia">
+        <h2>${articulo.titulo}</h2>
+        <h4>${articulo.fecha}</h4>
+        <p>${articulo.descripcion}</p>
+      </div>
+      `;
     } else {
-      divArticulo.classList.add("internacional");
+      contenedor.innerHTML += `
+      <div class="articulo internacional">
+        <img src="${articulo.imgUrl}" alt="Imagen alusiva a la noticia">
+        <h2>${articulo.titulo}</h2>
+        <h4>${articulo.fecha}</h4>
+        <p>${articulo.descripcion}</p>
+      </div>
+      `;
     }
-
-    //Creacion de nodos de texto
-    let textTitulo = document.createTextNode(articulo.titulo);
-    let textCuerpo = document.createTextNode(articulo.descripcion);
-    let textFecha = document.createTextNode(articulo.fecha);
-
-    //Unir los nodos
-    tituloArticulo.appendChild(textTitulo);
-    cuerpoArticulo.appendChild(textCuerpo);
-    fechaArticulo.appendChild(textFecha);
-    divArticulo.appendChild(imgArticulo);
-    divArticulo.appendChild(tituloArticulo);
-    divArticulo.appendChild(fechaArticulo);
-    divArticulo.appendChild(cuerpoArticulo);
-    contenedor.appendChild(divArticulo);
-
-    //Creamos función filtrar Notici
-    let btnNacional = document.getElementById("btn-Nac");
-    btnNacional.addEventListener("click", () => {
-      if(divArticulo.classList.contains("internacional")){
-        divArticulo.classList.add("ocultar");
-      }
-      if(divArticulo.classList.contains("nacional")){
-        if(divArticulo.classList.contains("ocultar")){
-          divArticulo.classList.remove("ocultar");
-        }
-      }
-    });
-
-    let btnInternacional = document.getElementById("btn-Int");
-    btnInternacional.addEventListener("click", () => {
-      if(divArticulo.classList.contains("nacional")){
-        divArticulo.classList.add("ocultar");
-      }
-      if(divArticulo.classList.contains("internacional")){
-        if(divArticulo.classList.contains("ocultar")){
-          divArticulo.classList.remove("ocultar");
-        }
-      }
-    });
   }
-
 }
 
+//Ejecutamos la función renderizar noticias
 renderizarNoticias(noticias);
 
-//Capturamos el enlace de Inicio
+//Agregamos evento al enlace de Inicio del menú
 
 let inicio = document.getElementById("inicio");
-
 inicio.addEventListener("click", () => {
   location.reload();
 })
+
+//variables para filtro noticias
+let btnNacional = document.getElementById("btn-Nac");
+let btnInternacional = document.getElementById("btn-Int");
+let divArticulo = document.querySelectorAll(".articulo");
+
+//Creamos evento para boton noticias nacionales
+btnNacional.addEventListener("click", () => {
+  divArticulo.forEach((a) => {
+    if(a.classList.contains("internacional")){a.classList.add("ocultar")}
+    if(a.classList.contains("nacional")){if(a.classList.contains("ocultar")){a.classList.remove("ocultar")}}
+  });
+});
+
+//Creamos evento para boton noticias Internacionales
+btnInternacional.addEventListener("click", () => {
+  divArticulo.forEach((a) => {
+    if(a.classList.contains("nacional")){a.classList.add("ocultar")}
+    if(a.classList.contains("internacional")){if(a.classList.contains("ocultar")){a.classList.remove("ocultar")}}
+  });
+});
